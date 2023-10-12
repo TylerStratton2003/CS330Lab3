@@ -1,10 +1,10 @@
 """
- Name: Your Name
+ Name: Tyler Stratton, Cassie Meboe, Daniel Ma, Kevin Thompson
  Assignment: Lab 3 - Process dataset
  Course: CS 330
- Semester: 20xx
+ Semester: Fall 2023
  Instructor: Dr. Cao
- Date: the current date
+ Date: 10/12/23
  Sources consulted: any books, individuals, etc consulted
 
  Known Bugs: description of known bugs and other program imperfections
