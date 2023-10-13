@@ -17,6 +17,7 @@
 import sys
 import argparse
 import math
+import random
 
 def load_data(arg_f):
     lbls = [];
@@ -93,7 +94,43 @@ def splitDataRandom(data, trainData, testData, ratio):
     Instruction:
             Almost same as splitData, the only difference is this function will randomly shuffle the input data, so you will randomly select data and store it in the trainData
     """
+
+    # your code here
+    # copy the data into temp
+    temp = []
+    # These lists will hold lines of data that will be written later
+    train, test = [], []
+    with open(data, 'r') as file:
+            file.readline() # Remove the header
+            for line in file:
+                    # Make each line of data a separate element
+                    temp.append(file.readline()) #
+            # Shuffle temp
+            random.shuffle(temp)
+            # Allocate the data based on the ratio
+            
+            # Integers to determine how many lines to write
+            
+            # The train file gets the ratio percent
+            trainAllocation = round(ratio * len(temp))
+            # The test file gets the remainder
+            testAllocation = len(temp) - trainAllocation
+            
+            # Now write the file for train
+            with open(trainData, 'w'):
+                for i in range(trainAllocation): # Each allocated line of data
+                        train.append(temp.pop()) # is taken from temp
+           
+            # Now write the data for test
+            with open(testData, 'w'):
+                for i in range(testAllocation): # Each allocated line of data
+                        test.append(temp.pop()) # is taken from temp
+            
+            # Both files should be written now
+    # End of method splitDataRandom
+
     pass;
+
 
 def main():
     options = parser.parse_args()
