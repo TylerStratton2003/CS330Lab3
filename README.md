@@ -1,5 +1,5 @@
 # CS330Lab3
-# Cassie Meboe, Tyler Stratton, 
+# Cassie Meboe, Tyler Stratton, Daniel Ma
 
 Our dataset is GitHubContents. We found it on Google Open dataset. 
 
