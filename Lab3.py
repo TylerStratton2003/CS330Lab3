@@ -18,6 +18,35 @@ import sys
 import argparse
 import math
 
+def load_data(arg_f):
+    lbls = [];
+    with open(arg_f, "r") as file:
+        lbls = file.readline().split(",")[:-1];
+        entries = [];
+        for line in file:
+            entries.append(line.split(",")[:-1]);
+    tmp_data = {};
+    tmp_data["labels"] = lbls;
+    tmp_data["entries"] = entries;
+    return tmp_data;
+
+def save_data(arg_f, arg_lbl, arg_e):
+    txt = "";
+    with open(arg_f, "w") as file:
+        line = "";
+        for lbl in arg_lbl:
+            line += lbl + ",";
+        line = line[:-1] + "\n";
+        txt += line;
+        for entry in arg_e:
+            line = "";
+            for val in entry:
+                line += val + ",";
+            line = line[:-1] + "\n";
+            txt += line;
+        file.write(txt);
+            
+
 def splitData(data, trainData, testData, ratio):
     """
     Input: data
@@ -25,12 +54,33 @@ def splitData(data, trainData, testData, ratio):
             testData, used to evaluate the performance of your machine learning model
             ratio, decide the percentage of training data on the whole dataset.
     Example:
-            You have a training data with 10000 data record, ratio is 0.7, so you will split the whole dataset and store the first 7000 of them in trainData, and the rest 3000 in testData
+            You have a training data with 10000 data record, 
+            ratio is 0.7, so you will split the whole dataset 
+            and store the first 7000 of them in trainData, 
+            and the rest 3000 in testData
     Instruction:
-            There is no grading script for this function, because different group may select different dataset depending on their course project, but generally you should make sure that you code can divide the dataset correctly, since you may use it for the course project
+            There is no grading script for this function, 
+            because different group may select different 
+            dataset depending on their course project, 
+            but generally you should make sure that you 
+            code can divide the dataset correctly, 
+            since you may use it for the course project
     """
-    # your code here
-    pass
+    
+    ratio = float(ratio);
+    #Load the data, get the labels and entries.
+    tmp_data = load_data(data);
+    entries = tmp_data["entries"];
+    lbls = tmp_data["labels"];
+    
+    #Get the values for splitting.
+    data_count = len(entries);
+    train_count = math.floor(data_count * ratio);
+    
+    #Finally, save the two parts of the data to files.
+    save_data(trainData, lbls, entries[:train_count]);
+    save_data(testData, lbls, entries[train_count:]);
+    
 
 def splitDataRandom(data, trainData, testData, ratio):
     """
@@ -43,8 +93,7 @@ def splitDataRandom(data, trainData, testData, ratio):
     Instruction:
             Almost same as splitData, the only difference is this function will randomly shuffle the input data, so you will randomly select data and store it in the trainData
     """
-    # your code here
-    pass
+    pass;
 
 def main():
     options = parser.parse_args()
@@ -91,6 +140,19 @@ def showHelper():
 
 
 if __name__ == "__main__":
+    '''
+    sys.argv.append("--mode");
+    sys.argv.append("N");
+    sys.argv.append("--input");
+    sys.argv.append("DATA/test.csv");
+    sys.argv.append("--output1");
+    sys.argv.append("trainData.txt");
+    sys.argv.append("--output2");
+    sys.argv.append("testData.txt");
+    sys.argv.append("--ratio");
+    sys.argv.append("0.7");
+    '''
+    
     #------------------------arguments------------------------------#
     #Shows help to the users                                        #
     #---------------------------------------------------------------#
