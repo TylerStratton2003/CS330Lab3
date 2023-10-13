@@ -174,8 +174,8 @@ def showHelper():
     """
     parser.print_help(sys.stderr)
     print("Please provide input augument. Here are examples:")
-    print("python " + sys.argv[0] + " --mode N --input Github.cvc --output1 trainData.txt --output2 testData.txt --ratio 0.7")
-    print("python " + sys.argv[0] + " --mode R --input Github.cvc --output1 trainData.txt --output2 testData.txt --ratio 0.7")
+    print("python " + sys.argv[0] + " --mode N --input Github.csv --output1 trainData.txt --output2 testData.txt --ratio 0.7")
+    print("python " + sys.argv[0] + " --mode R --input Github.csv --output1 trainData.txt --output2 testData.txt --ratio 0.7")
 
     sys.exit(0)
 
