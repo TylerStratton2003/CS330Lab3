@@ -117,14 +117,18 @@ def splitDataRandom(data, trainData, testData, ratio):
             testAllocation = len(temp) - trainAllocation
             
             # Now write the file for train
-            with open(trainData, 'w'):
+            with open(trainData, 'w') as trainFile:
                 for i in range(trainAllocation): # Each allocated line of data
                         train.append(temp.pop()) # is taken from temp
+                for j in range(len(train)):
+                    trainFile.write(train[j]) # Write the data
            
             # Now write the data for test
-            with open(testData, 'w'):
+            with open(testData, 'w') as testFile:
                 for i in range(testAllocation): # Each allocated line of data
                         test.append(temp.pop()) # is taken from temp
+                for j in range(len(test)):
+                    testFile.write(test[j]) # Write the data
             
             # Both files should be written now
     # End of method splitDataRandom
