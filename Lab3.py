@@ -53,7 +53,29 @@ def main():
     """
     similar to Lab 2, please add your testing code here
     """
-    # your code here
+    if mode == "N":
+      """
+      The normal mode
+      """
+      inputFile = options.input
+      outModel1 = options.output1
+      outModel2 = options.output2
+      ratioNum = options.ratio
+      if inputFile == '' or outModel1 == '' or outModel2 == '':
+        showHelper()
+      splitData(inputFile , outModel1, outModel2, ratioNum)
+
+    if mode == "R":
+      """
+      The random mode
+      """
+      inputFile = options.input
+      outModel1 = options.output1
+      outModel2 = options.output2
+      ratioNum = options.ratio
+      if inputFile == '' or outModel1 == '' or outModel2 == '':
+        showHelper()
+      splitDataRandom(inputFile , outModel1, outModel2, ratioNum)
     pass
 
 def showHelper():
@@ -61,7 +83,9 @@ def showHelper():
     Similar to Lab 2, please update the showHelper function to show users how to use your code
     """
     parser.print_help(sys.stderr)
-    # your code here
+    print("Please provide input augument. Here are examples:")
+    print("python " + sys.argv[0] + " --mode N --input Github.cvc --output1 trainData.txt --output2 testData.txt --ratio 0.7")
+    print("python " + sys.argv[0] + " --mode R --input Github.cvc --output1 trainData.txt --output2 testData.txt --ratio 0.7")
 
     sys.exit(0)
 
@@ -79,7 +103,18 @@ if __name__ == "__main__":
     """
     Similar to Lab 2, please update the argument, and add as you need
     """
-    # your code here
+    parser.add_argument('--input', dest='input',
+    default = '',    # default empty!
+    help = 'The input file. This is the data to be split')
+    parser.add_argument('--output1', dest='output1',
+    default = '',    # default empty!
+    help = 'The first output file. This is the training data')
+    parser.add_argument('--output2', dest='output2',
+    default = '',    # default empty!
+    help = 'The second output file. This is the testing data')
+    parser.add_argument('--ratio', dest='ratio',
+    default = 0.7,    # default 0.7!
+    help = 'The percentage of the data that is used for training ')
     if len(sys.argv)<3:
         showHelper()
     main()
