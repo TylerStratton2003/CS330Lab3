@@ -146,7 +146,7 @@ def main():
       inputFile = options.input
       outModel1 = options.output1
       outModel2 = options.output2
-      ratioNum = options.ratio
+      ratioNum = float(options.ratio)
       if inputFile == '' or outModel1 == '' or outModel2 == '':
         showHelper()
       splitData(inputFile , outModel1, outModel2, ratioNum)
@@ -158,7 +158,7 @@ def main():
       inputFile = options.input
       outModel1 = options.output1
       outModel2 = options.output2
-      ratioNum = options.ratio
+      ratioNum = float(options.ratio)
       if inputFile == '' or outModel1 == '' or outModel2 == '':
         showHelper()
       splitDataRandom(inputFile , outModel1, outModel2, ratioNum)
